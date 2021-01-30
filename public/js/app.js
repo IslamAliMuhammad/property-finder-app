@@ -3902,6 +3902,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3923,11 +3948,16 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: this.$inertia.form({
         name: '',
+        user_name: '',
         email: '',
+        mobile_number: '',
+        city_id: null,
+        address: '',
         password: '',
         password_confirmation: '',
         terms: false
-      })
+      }),
+      cities: []
     };
   },
   methods: {
@@ -3940,6 +3970,15 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    axios.get('/cities').then(function (response) {
+      return _this2.cities = response.data.cities;
+    })["catch"](function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -32036,19 +32075,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "jet-authentication-card",
-    {
-      scopedSlots: _vm._u([
-        {
-          key: "logo",
-          fn: function() {
-            return [_c("jet-authentication-card-logo")]
-          },
-          proxy: true
-        }
-      ])
-    },
     [
-      _vm._v(" "),
       _c("jet-validation-errors", { staticClass: "mb-4" }),
       _vm._v(" "),
       _c(
@@ -32065,7 +32092,7 @@ var render = function() {
           _c(
             "div",
             [
-              _c("jet-label", { attrs: { for: "name", value: "Name" } }),
+              _c("jet-label", { attrs: { for: "name", value: "Full Name" } }),
               _vm._v(" "),
               _c("jet-input", {
                 staticClass: "mt-1 block w-full",
@@ -32092,6 +32119,34 @@ var render = function() {
             "div",
             { staticClass: "mt-4" },
             [
+              _c("jet-label", {
+                attrs: { for: "user_name", value: "User Name" }
+              }),
+              _vm._v(" "),
+              _c("jet-input", {
+                staticClass: "mt-1 block w-full",
+                attrs: {
+                  id: "user_name",
+                  type: "text",
+                  required: "",
+                  autofocus: ""
+                },
+                model: {
+                  value: _vm.form.user_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "user_name", $$v)
+                  },
+                  expression: "form.user_name"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-4" },
+            [
               _c("jet-label", { attrs: { for: "email", value: "Email" } }),
               _vm._v(" "),
               _c("jet-input", {
@@ -32105,6 +32160,148 @@ var render = function() {
                   expression: "form.email"
                 }
               })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-4" },
+            [
+              _c("jet-label", {
+                attrs: { for: "mobile_number", value: "Mobile Number" }
+              }),
+              _vm._v(" "),
+              _c("jet-input", {
+                staticClass: "mt-1 block w-full",
+                attrs: {
+                  id: "mobile_number",
+                  type: "text",
+                  required: "",
+                  autofocus: ""
+                },
+                model: {
+                  value: _vm.form.mobile_number,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "mobile_number", $$v)
+                  },
+                  expression: "form.mobile_number"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-4" },
+            [
+              _c("jet-label", { attrs: { for: "address", value: "Address" } }),
+              _vm._v(" "),
+              _c("jet-input", {
+                staticClass: "mt-1 block w-full",
+                attrs: {
+                  id: "address",
+                  type: "text",
+                  required: "",
+                  autofocus: ""
+                },
+                model: {
+                  value: _vm.form.address,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "address", $$v)
+                  },
+                  expression: "form.address"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-4" },
+            [
+              _c("jet-label", { attrs: { for: "city_id", value: "City" } }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "relative inline-block w-full text-gray-700 mt-1"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.city_id,
+                          expression: "form.city_id"
+                        }
+                      ],
+                      staticClass:
+                        "w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline",
+                      attrs: { placeholder: "Regular input", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.form,
+                            "city_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.cities, function(city) {
+                      return _c(
+                        "option",
+                        { key: city.id, domProps: { value: city.id } },
+                        [_vm._v(_vm._s(city.city_name))]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-4 h-4 fill-current",
+                          attrs: { viewBox: "0 0 20 20" }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
+                              "clip-rule": "evenodd",
+                              "fill-rule": "evenodd"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
             ],
             1
           ),

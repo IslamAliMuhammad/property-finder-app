@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use App\Models\City;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +27,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+
+Route::get('/cities', function () {
+    return response()->json(['cities' => City::select('id', 'city_name')->get()], 200);
+});

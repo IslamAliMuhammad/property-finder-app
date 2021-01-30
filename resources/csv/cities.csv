@@ -1,0 +1,250 @@
+1,1,Cairo
+2,2,Giza
+3,2,Sixth of October
+4,2,Cheikh Zayed
+5,2,Hawamdiyah
+6,2,Al Badrasheen
+7,2,Saf
+8,2,Atfih
+9,2,Al Ayat
+10,2,Al-Bawaiti
+11,2,ManshiyetAl Qanater
+12,2,Oaseem
+13,2,Kerdasa
+14,2,Abu Nomros
+15,2,Kafr Ghati
+16,2,Manshiyet Al Bakari
+17,3,Alexandria
+18,3,Burj Al Arab
+19,3,New Burj Al Arab
+20,12,Banha
+21,12,Qalyub
+22,12,Shubra Al Khaimah
+23,12,Al Qanater Charity
+24,12,Khanka
+25,12,Kafr Shukr
+26,12,Tukh
+27,12,Qaha
+28,12,Obour
+29,12,Khosous
+30,12,Shibin Al Qanater
+31,6,Damanhour
+32,6,Kafr El Dawar
+33,6,Rashid
+34,6,Edco
+35,6,Abu al-Matamir
+36,6,Abu Homs
+37,6,Delengat
+38,6,Mahmoudiyah
+39,6,Rahmaniyah
+40,6,Itai Baroud
+41,6,Housh Eissa
+42,6,Shubrakhit
+43,6,Kom Hamada
+44,6,Badr
+45,6,Wadi Natrun
+46,6,New Nubaria
+47,23,Marsa Matrouh
+48,23,El Hamam
+49,23,Alamein
+50,23,Dabaa
+51,23,Al-Nagila
+52,23,Sidi Brani
+53,23,Salloum
+54,23,Siwa
+55,19,Damietta
+56,19,New Damietta
+57,19,Ras El Bar
+58,19,Faraskour
+59,19,Zarqa
+60,19,alsaru
+61,19,alruwda
+62,19,Kafr El-Batikh
+63,19,Azbet Al Burg
+64,19,Meet Abou Ghalib
+65,19,Kafr Saad
+66,4,Mansoura
+67,4,Talkha
+68,4,Mitt Ghamr
+69,4,Dekernes
+70,4,Aga
+71,4,Menia El Nasr
+72,4,Sinbillawin
+73,4,El Kurdi
+74,4,Bani Ubaid
+75,4,Al Manzala
+76,4,tami al'amdid
+77,4,aljamalia
+78,4,Sherbin
+79,4,Mataria
+80,4,Belqas
+81,4,Meet Salsil
+82,4,Gamasa
+83,4,Mahalat Damana
+84,4,Nabroh
+85,22,Kafr El Sheikh
+86,22,Desouq
+87,22,Fooh
+88,22,Metobas
+89,22,Burg Al Burullus
+90,22,Baltim
+91,22,Masief Baltim
+92,22,Hamol
+93,22,Bella
+94,22,Riyadh
+95,22,Sidi Salm
+96,22,Qellen
+97,22,Sidi Ghazi
+98,8,Tanta
+99,8,Al Mahalla Al Kobra
+100,8,Kafr El Zayat
+101,8,Zefta
+102,8,El Santa
+103,8,Qutour
+104,8,Basion
+105,8,Samannoud
+106,10,Shbeen El Koom
+107,10,Sadat City
+108,10,Menouf
+109,10,Sars El-Layan
+110,10,Ashmon
+111,10,Al Bagor
+112,10,Quesna
+113,10,Berkat El Saba
+114,10,Tala
+115,10,Al Shohada
+116,20,Zagazig
+117,20,Al Ashr Men Ramadan
+118,20,Minya Al Qamh
+119,20,Belbeis
+120,20,Mashtoul El Souq
+121,20,Qenaiat
+122,20,Abu Hammad
+123,20,El Qurain
+124,20,Hehia
+125,20,Abu Kabir
+126,20,Faccus
+127,20,El Salihia El Gedida
+128,20,Al Ibrahimiyah
+129,20,Deirb Negm
+130,20,Kafr Saqr
+131,20,Awlad Saqr
+132,20,Husseiniya
+133,20,san alhajar alqablia
+134,20,Manshayat Abu Omar
+135,18,PorSaid
+136,18,PorFouad
+137,9,Ismailia
+138,9,Fayed
+139,9,Qantara Sharq
+140,9,Qantara Gharb
+141,9,El Tal El Kabier
+142,9,Abu Sawir
+143,9,Kasasien El Gedida
+144,14,Suez
+145,26,Arish
+146,26,Sheikh Zowaid
+147,26,Nakhl
+148,26,Rafah
+149,26,Bir al-Abed
+150,26,Al Hasana
+151,21,Al Toor
+152,21,Sharm El-Shaikh
+153,21,Dahab
+154,21,Nuweiba
+155,21,Taba
+156,21,Saint Catherine
+157,21,Abu Redis
+158,21,Abu Zenaima
+159,21,Ras Sidr
+160,17,Bani Sweif
+161,17,Beni Suef El Gedida
+162,17,Al Wasta
+163,17,Naser
+164,17,Ehnasia
+165,17,beba
+166,17,Fashn
+167,17,Somasta
+168,7,Fayoum
+169,7,Fayoum El Gedida
+170,7,Tamiya
+171,7,Snores
+172,7,Etsa
+173,7,Epschway
+174,7,Yusuf El Sediaq
+175,11,Minya
+176,11,Minya El Gedida
+177,11,El Adwa
+178,11,Magagha
+179,11,Bani Mazar
+180,11,Mattay
+181,11,Samalut
+182,11,Madinat El Fekria
+183,11,Meloy
+184,11,Deir Mawas
+185,16,Assiut
+186,16,Assiut El Gedida
+187,16,Dayrout
+188,16,Manfalut
+189,16,Qusiya
+190,16,Abnoub
+191,16,Abu Tig
+192,16,El Ghanaim
+193,16,Sahel Selim
+194,16,El Badari
+195,16,Sidfa
+196,13,El Kharga
+197,13,Paris
+198,13,Mout
+199,13,Farafra
+200,13,Balat
+201,5,Hurghada
+202,5,Ras Ghareb
+203,5,Safaga
+204,5,El Qusiar
+205,5,Marsa Alam
+206,5,Shalatin
+207,5,Halaib
+208,27,Sohag
+209,27,Sohag El Gedida
+210,27,Akhmeem
+211,27,Akhmim El Gedida
+212,27,Albalina
+213,27,El Maragha
+214,27,almunsha'a
+215,27,Dar AISalaam
+216,27,Gerga
+217,27,Jahina Al Gharbia
+218,27,Saqilatuh
+219,27,Tama
+220,27,Tahta
+221,25,Qena
+222,25,New Qena
+223,25,Abu Tesht
+224,25,Nag Hammadi
+225,25,Deshna
+226,25,Alwaqf
+227,25,Qaft
+228,25,Naqada
+229,25,Farshout
+230,25,Quos
+231,24,Luxor
+232,24,New Luxor
+233,24,Esna
+234,24,New Tiba
+235,24,Al ziynia
+236,24,Al Bayadieh
+237,24,Al Qarna
+238,24,Armant
+239,24,Al Tud
+240,15,Aswan
+241,15,Aswan El Gedida
+242,15,Drau
+243,15,Kom Ombo
+244,15,Nasr Al Nuba
+245,15,Kalabsha
+246,15,Edfu
+247,15,Al-Radisiyah
+248,15,Al Basilia
+249,15,Al Sibaeia
+250,15,Abo Simbl Al Siyahia

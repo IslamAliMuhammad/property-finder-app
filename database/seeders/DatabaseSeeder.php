@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\GovernorateSeeder;
 use Database\Seeders\CitySeeder;
+use Database\Seeders\PaymentOptionSeeder;
+use Database\Seeders\AmenitySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GovernorateSeeder::class,
             CitySeeder::class,
+            PaymentOptionSeeder::class,
+            AmenitySeeder::class,
         ]);
     }
 }

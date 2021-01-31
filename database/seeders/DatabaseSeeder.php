@@ -7,6 +7,7 @@ use Database\Seeders\GovernorateSeeder;
 use Database\Seeders\CitySeeder;
 use Database\Seeders\PaymentOptionSeeder;
 use Database\Seeders\AmenitySeeder;
+use Database\Seeders\ApartmentTypeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             PaymentOptionSeeder::class,
             AmenitySeeder::class,
+            ApartmentTypeSeeder::class,
         ]);
     }
 }

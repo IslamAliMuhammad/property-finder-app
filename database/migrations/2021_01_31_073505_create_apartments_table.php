@@ -16,7 +16,7 @@ class CreateApartmentsTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('title');
+            $table->string('title', 70);
             $table->foreignId('apartment_type_id');
             $table->decimal('price', 10, 2, true);
             $table->unsignedTinyInteger('bedrooms');
@@ -26,7 +26,7 @@ class CreateApartmentsTable extends Migration
             $table->boolean('is_furnished');
             $table->foreignId('payment_option_id');
             $table->boolean('for_sale');
-            $table->string('description');
+            $table->string('description', 4096);
             $table->foreignId('city_id');
             $table->string('address');
             $table->timestamps();

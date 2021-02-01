@@ -23,7 +23,7 @@ class Apartment extends Model
     }
 
     public function photos(){
-        return $this.hasMany(ApartmentPhoto::class, 'apartment_id');
+        return $this->hasMany(ApartmentPhoto::class, 'apartment_id');
     }
 
     public function type(){
@@ -42,3 +42,5 @@ class Apartment extends Model
         return $this->belongsToMany(Amenity::class, 'apartment_amenity', 'apartment_id', 'amenity_id');
     }
 }
+
+

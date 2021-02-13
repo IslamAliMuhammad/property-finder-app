@@ -16,7 +16,8 @@ class ApartmentController extends Controller
     public function index()
     {
         //
-        $apartments = Apartment::paginate(9);
+        $apartments = Apartment::with('city')->paginate(9);
+
         return Inertia::render('Apartments', ['apartments' => $apartments]);
     }
 
@@ -50,6 +51,9 @@ class ApartmentController extends Controller
     public function show($id)
     {
         //
+        $apartment = Apartment::with(['user', 'photos', 'type', 'paymentOption', 'city', 'amenities'])->find($id);
+        
+        return Inertia::render('ApartmentDetail', ['apartment' => $apartment]);
     }
 
     /**

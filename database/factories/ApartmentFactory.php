@@ -26,17 +26,17 @@ class ApartmentFactory extends Factory
             //
             'user_id' => User::factory(),
             'title' => $this->faker->realText(70),
-            'apartment_type_id' => $this->faker->numberBetween(0, 6),
+            'apartment_type_id' => $this->faker->numberBetween(1, 5),
             'price' => $this->faker->randomFloat(2, 100000, 800000) ,
-            'bedrooms' => $this->faker->numberBetween(0, 15),
-            'bathrooms' => $this->faker->numberBetween(0, 5),   
+            'bedrooms' => $this->faker->numberBetween(1, 14),
+            'bathrooms' => $this->faker->numberBetween(1, 4),   
             'area' => $this->faker->numberBetween(100, 1000),
-            'level' => $this->faker->numberBetween(0, 31),
+            'level' => $this->faker->numberBetween(1, 30),
             'is_furnished' => $this->faker->boolean(),
-            'payment_option_id' => $this->faker->numberBetween(0, 4),
+            'payment_option_id' => $this->faker->numberBetween(1, 3),
             'for_sale' => $this->faker->boolean(),
             'description' => $this->faker->realText(4096),
-            'city_id' => $this->faker->numberBetween(0, 251),
+            'city_id' => $this->faker->numberBetween(1, 250),
             'address' => $this->faker->address(),
         ];
     }

@@ -4044,6 +4044,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -33435,26 +33442,43 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("app-layout", [
-    _c(
-      "div",
-      { staticClass: "container mx-auto" },
-      [
-        _c(
-          "div",
-          { staticClass: "grid grid-cols-3" },
-          _vm._l(_vm.apartments.data, function(apartment) {
-            return _c("apartment", {
-              key: apartment.id,
-              attrs: { apartment: apartment }
-            })
-          }),
-          1
-        ),
-        _vm._v(" "),
-        _c("pagination-nav", { attrs: { links: _vm.apartments.links } })
-      ],
-      1
-    )
+    _c("div", { staticClass: "container mx-auto" }, [
+      _vm.apartments.data.length < 0
+        ? _c(
+            "div",
+            [
+              _c(
+                "div",
+                { staticClass: "grid grid-cols-3" },
+                _vm._l(_vm.apartments.data, function(apartment) {
+                  return _c("apartment", {
+                    key: apartment.id,
+                    attrs: { apartment: apartment }
+                  })
+                }),
+                1
+              ),
+              _vm._v(" "),
+              _c("pagination-nav", { attrs: { links: _vm.apartments.links } })
+            ],
+            1
+          )
+        : _c("div", [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg mt-3 text-center",
+                attrs: { role: "alert" }
+              },
+              [
+                _c("p", {}, [
+                  _vm._v("Sorry, there are no apartments available")
+                ])
+              ]
+            )
+          ])
+    ])
   ])
 }
 var staticRenderFns = []

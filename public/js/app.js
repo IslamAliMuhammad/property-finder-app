@@ -29745,11 +29745,7 @@ var render = function() {
         [
           _c("img", {
             staticClass: "object-cover w-full h-48",
-            attrs: {
-              src:
-                "https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-              alt: "Flower and sky"
-            }
+            attrs: { src: _vm.apartment.photos[0].photo_path }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "px-6 py-4" }, [
@@ -33443,7 +33439,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("app-layout", [
     _c("div", { staticClass: "container mx-auto" }, [
-      _vm.apartments.data.length < 0
+      _vm.apartments.data.length > 0
         ? _c(
             "div",
             [

@@ -16,7 +16,7 @@ class ApartmentController extends Controller
     public function index()
     {
         //
-        $apartments = Apartment::with('city')->paginate(9);
+        $apartments = Apartment::with(['city', 'photos'])->paginate(9);
 
         return Inertia::render('Apartments', ['apartments' => $apartments]);
     }

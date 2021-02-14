@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout';
+    import AppLayout from '@/Layouts/AppLayout'
     import AdInfo from '@/Components/Ad/AdInfo'
     import AdvertiserInfo from '@/Components/Ad/AdvertiserInfo'
 

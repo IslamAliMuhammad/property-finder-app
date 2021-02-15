@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row gap-4">
+    <div class="flex flex-row gap-4 text-sm">
         <h3 class="font-bold capitalize">{{ itemHeader }}</h3>
 
         <ul v-if="Array.isArray(this.item) && this.item.length > 0">

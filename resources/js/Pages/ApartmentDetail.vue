@@ -1,7 +1,7 @@
 <template>
     <app-layout>
-        <div class="container mx-auto">
-            <div class="grid grid-cols-12">
+        <div class="container mx-auto my-5">
+            <div class="grid grid-cols-12 gap-3">
                 <div class="col-span-9">
                     <ad-info :apartment="apartment"/>
                 </div>

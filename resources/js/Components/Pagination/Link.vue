@@ -30,15 +30,15 @@
              linkColor() {
                  if(this.link.active || this.link.url === null) {
                      return {
-                        'border-red-200': true,
-                        'bg-red-200': true,
+                        'border-gray-400': true,
+                        'bg-gray-400': true,
                         'cursor-default': true,
                      }
                  }
 
                 return {
-                    'border-red-500': true,
-                    'bg-red-500': true,
+                    'border-gray-600': true,
+                    'bg-gray-600': true,
                  
                 }
             },

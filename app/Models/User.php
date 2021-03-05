@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Apartment;
+use App\Models\City;
 
 class User extends Authenticatable
 {
@@ -66,5 +67,9 @@ class User extends Authenticatable
 
     public function apartments(){
         return $this->hasMany(Apartment::class, 'user_id');
+    }
+
+    public function city(){
+        return $this->belongsTo(City::class, 'city_id');
     }
 }

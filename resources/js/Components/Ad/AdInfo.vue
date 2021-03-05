@@ -3,20 +3,25 @@
        <div class="header">
             <h1 class="font-bold text-xl">{{ apartment.title }}</h1>
             <p>
-                <strong class="text-sm">{{ apartment.city.city_name }}</strong>
+                <strong class="text-sm">{{ apartment.city.city_name }} - {{ apartment.city.governorate.governorate_name }}</strong>
                 <small>Added at {{ dateFormatted }}</small>
             </p>
        </div>
 
        <div class="main-photo w-2/3">
-            <img v-if="apartment.photos.length > 0" :src="apartment.photos[0].photo_path" alt="ad photo">
-            <img v-if="apartment.photos.length == 0" src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpgs" alt="ad photo">
+            <img v-if="apartment.photos.length > 0" :src="prefixBaseURL(apartment.photos[0].photo_path)" alt="ad photo" class="rounded-2xl">
+            <img v-if="apartment.photos.length == 0" src="https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpgs" class="rounded-2xl" alt="ad photo">
        </div>
 
        <div class="description space-y-5">
            <selective-description-list :list="selectiveDescriptionList"/>
 
            <div class="text p-3">
+               <div class="address flex flex-row gap-2 mb-3">
+                   <h3 class="font-semibold underline">Apartment Address: </h3>
+                   <p>{{ apartment.address }}, <span class="font-semibold">{{ apartment.city.city_name }} - {{ apartment.city.governorate.governorate_name }}</span>.</p>
+                </div>
+
                <p class="leading-relaxed" :class="textDescriptionOverflow">{{ apartment.description }}</p>
                <button @click="seeMore" class="font-bold underline text-gray-700">{{ isSeeMoreClicked ? 'see less' : 'see more'}}</button>
            </div>
@@ -24,11 +29,10 @@
        </div>
 
         <div class="photos space-y-3">
-        <div v-for="photo in apartment.photos" :key="photo.id">
-                <img :src="photo.photo_path" alt="ad photo">
+            <div v-for="photo in excludeMainPhoto" :key="photo.id">
+                <img :src="prefixBaseURL(photo.photo_path)" class="rounded-2xl" alt="ad photo">
             </div>
         </div>
-        
 
         <inertia-link :href="route('apartments.index')" class="flex flex-row gap-1">
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 text-gray-600">
@@ -50,7 +54,7 @@
         },
         data() {
             return {
-                isSeeMoreClicked: true,  
+                isSeeMoreClicked: false,  
             }
         },
         props: {
@@ -63,6 +67,9 @@
             seeMore(e) {
                 this.isSeeMoreClicked = !this.isSeeMoreClicked;
             },
+            prefixBaseURL(endpoint){
+                return window.location.origin+ '/' + endpoint;
+            }
         },
         computed: {
             selectiveDescriptionList() {
@@ -73,12 +80,18 @@
                     furnished: this.isFurnished,
                     level: this.apartment.level,
                     ad_type: this.adType,
-                    apartment_type: this.apartment.type,
+                    apartment_type: this.apartment.type.type,
                     payment_option: this.apartment.payment_option ? this.apartment.payment_option.option : this.apartment.payment_option,
                     amenities: this.apartment.amenities,
                 };
             },
+            excludeMainPhoto(){
+                return this.apartment.photos.slice(1);
+            },
             isFurnished() {
+                if(this.apartment.is_furnished == null){
+                    return null;
+                }
                 return this.apartment.is_furnished ? 'yes' : 'No';
             },
             adType() {
@@ -90,7 +103,7 @@
             },  
             textDescriptionOverflow() {
                 return {
-                    'h-96': !this.isSeeMoreClicked, 
+                    'h-16': !this.isSeeMoreClicked,
                     'overflow-ellipsis': !this.isSeeMoreClicked, 
                     'overflow-hidden': !this.isSeeMoreClicked,
                 }

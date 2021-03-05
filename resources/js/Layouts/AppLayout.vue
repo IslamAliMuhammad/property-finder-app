@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mx-auto">
         <jet-banner />
 
         <div class="min-h-screen bg-white">
@@ -8,7 +8,7 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
-                        <!-- Logo -->
+                            <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <inertia-link :href="route('apartments.index')">
                                     <jet-application-mark class="block h-9 w-auto" />
@@ -23,8 +23,17 @@
                                 </jet-nav-link>
                             </div>
                         </div>
-
+                        
+                        
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
+                            <inertia-link :href="route('apartments.create')" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                                </svg>
+
+                                <span class="font-semibold text-md">Place an Ad</span>
+                            </inertia-link>             
+
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">

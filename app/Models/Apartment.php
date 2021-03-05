@@ -27,7 +27,7 @@ class Apartment extends Model
     }
 
     public function type(){
-        return $this->belongsTo(ApartmentType::class, 'apartment_id');
+        return $this->belongsTo(ApartmentType::class, 'apartment_type_id');
     }
 
     public function paymentOption(){

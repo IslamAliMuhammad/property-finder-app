@@ -15,7 +15,7 @@ class CreateApartmentPhotosTable extends Migration
     {
         Schema::create('apartment_photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('apartment_id');
+            $table->foreignId('apartment_id')->constrained()->onDelete('cascade');
             $table->string('photo_path');
             $table->timestamps();
         });

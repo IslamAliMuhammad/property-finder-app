@@ -15,8 +15,8 @@ class CreateApartmentAmenityTable extends Migration
     {
         Schema::create('apartment_amenity', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('apartment_id');
-            $table->foreignId('amenity_id');
+            $table->foreignId('apartment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('amenity_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

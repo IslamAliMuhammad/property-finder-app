@@ -33,6 +33,10 @@ Route::get('/cities', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
+    
+    Route::get('/apartments/create', [ApartmentController::class, 'create'])->name('apartments.create');
 
     Route::get('/apartments/{id}', [ApartmentController::class, 'show'])->name('apartments.show');
+
+    Route::post('/apartments', [ApartmentController::class, 'store'])->name('apartments.store');
 });

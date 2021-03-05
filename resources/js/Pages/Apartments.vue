@@ -1,6 +1,7 @@
 <template>
     <app-layout>
         <div class="container mx-auto">
+
             <div v-if="apartments.data.length > 0">
                 <div class="grid grid-cols-3">
                     <apartment v-for="apartment in apartments.data" :key="apartment.id" :apartment="apartment"/>
@@ -15,6 +16,7 @@
                 </div>
             </div>
         </div>
+
     </app-layout>
 </template>
 

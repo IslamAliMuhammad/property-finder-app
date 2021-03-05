@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Governorate;
 use App\Models\Apartment;
+use App\Models\User;
 
 class City extends Model
 {
@@ -24,4 +25,7 @@ class City extends Model
         return $this->hasMany(Apartment::class, 'city_id');
     }
 
+    public function users(){
+        return $this->hasMany(User::class, 'city_id');
+    }
 }

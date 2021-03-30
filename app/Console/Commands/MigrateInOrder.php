@@ -52,6 +52,10 @@ class MigrateInOrder extends Command
             'database/migrations/2021_01_31_064317_create_amenities_table.php',
             'database/migrations/2021_02_01_042233_create_apartment_amenity_table.php',
             'database/migrations/2021_01_31_081126_create_apartment_photos_table.php',
+            'database\migrations\2021_03_05_192506_create_villa_types_table.php',
+            'database\migrations\2021_03_05_183720_create_villas_table.php',
+            'database\migrations\2021_03_05_191654_create_villa_photos_table.php',
+            'database\migrations\2021_03_05_192255_create_villa_amenity_table.php',
             ];
 
             $rollbackMigrations = $this->option('reset');

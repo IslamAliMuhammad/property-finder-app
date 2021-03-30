@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-row gap-4 text-sm">
-        <h3 class="font-bold capitalize">{{ itemHeader }}</h3>
+        <h3 class="font-bold capitalize">{{ headerFormatted }}</h3>
 
         <ul v-if="Array.isArray(this.item) && this.item.length > 0">
             <li v-for="obj in item" :key="obj.id">{{ obj.amenity }}</li>
@@ -20,20 +20,20 @@
 
         },
         props: {
-            item: {
-                required: true,
-            },
-            header: {
+             header: {
                 required: String,
                 required: true,
-            }
+            },
+            item: {
+                required: true,
+            },    
         },
         methods: {
             
         },
         computed: {
-            itemHeader(){
-               return this.header.replace('_', ' ');
+            headerFormatted(){
+               return this.header.replace('ad_', ' ');
             },
             itemValue(){
                 if(Array.isArray(this.item)) {

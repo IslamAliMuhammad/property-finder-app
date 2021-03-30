@@ -1,6 +1,6 @@
 <template>
     <div class="selective grid grid-cols-2 grid-flow-row gap-2 rounded-lg shadow-lg p-6">
-        <selective-description-item v-for="(item, index) in list" :key="index" :item="item" :header="index"/>
+        <selective-description-item v-for="(item, index) in listFiltered" :key="index" :header="index" :item="item"/>
     </div>
 </template>
 
@@ -18,7 +18,15 @@
             },
         },
         computed: {
-            
+            listFiltered() {
+                for(let key in this.list){
+                    if(!this.list[key]){
+                        delete this.list[key]
+                    }
+                }
+
+                return this.list;
+            },
         },
     }
 </script>

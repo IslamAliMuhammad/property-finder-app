@@ -2,7 +2,7 @@
     <div class="space-y-5">
         <div class="space-y-3">
             <div class="price bg-gray-100 p-3 rounded-lg text-center shadow-md">
-                <span class="text-lg font-bold">{{ apartment.price }} EGP</span>
+                <span class="text-lg font-bold">{{ ad.price }} EGP</span>
             </div>
 
             <div
@@ -20,7 +20,7 @@
                         clip-rule="evenodd"
                     />
                 </svg>
-                <p class="font-medium break-all">{{ apartment.user.email }}</p>
+                <p class="font-medium break-all">{{ ad.user.email }}</p>
             </div>
 
             <div
@@ -36,7 +36,7 @@
                         d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
                     />
                 </svg>
-                <p class="font-medium">{{ apartment.user.mobile_number }}</p>
+                <p class="font-medium">{{ ad.user.mobile_number }}</p>
             </div>
         </div>
 
@@ -44,10 +44,10 @@
 
         <div class="address bg-gray-100 p-3 rounded-lg shadow-md">
             <p class="font-bold">
-                {{ apartment.user.city.city_name }} -
-                {{ apartment.user.city.governorate.governorate_name }}
+                {{ ad.user.city.city_name }} -
+                {{ ad.user.city.governorate.governorate_name }}
             </p>
-            <p class="text-sm">{{ apartment.user.address }}</p>
+            <p class="text-sm">{{ ad.user.address }}</p>
         </div>
 
         <div
@@ -68,7 +68,7 @@
                 />
             </svg>
             <p class="flex flex-col font-semibold">
-                <strong>{{ apartment.user.name }}</strong>
+                <strong>{{ ad.user.name }}</strong>
                 <small>On site since {{ dateFormatted }}</small>
             </p>
         </div>
@@ -82,14 +82,14 @@ export default {
         SafetyTips,
     },
     props: {
-        apartment: {
+        ad: {
             type: Object,
             required: true,
         },
     },
     computed: {
         dateFormatted() {
-            let date = new Date(this.apartment.user.created_at);
+            let date = new Date(this.ad.user.created_at);
             return date.toLocaleString("en-us", {
                 month: "long",
                 year: "numeric",

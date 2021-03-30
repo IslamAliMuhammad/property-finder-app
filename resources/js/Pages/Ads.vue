@@ -2,12 +2,12 @@
     <app-layout>
         <div class="container mx-auto">
 
-            <div v-if="apartments.data.length > 0">
+            <div v-if="ads.data.length > 0">
                 <div class="grid grid-cols-3">
-                    <apartment v-for="apartment in apartments.data" :key="apartment.id" :apartment="apartment"/>
+                    <com-ad v-for="ad in ads.data" :key="ad.id" :ad="ad"/>
                 </div>
 
-                <pagination-nav :links="apartments.links"/>
+                <pagination-nav :links="ads.links"/>
             </div>
 
             <div v-else>
@@ -22,17 +22,17 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Apartment from '@/Components/Apartment'
+    import ComAd from '@/Components/Ad'
     import PaginationNav from '@/Components/Pagination/Nav'
 
     export default {
         components: {
             AppLayout,
-            Apartment,
+            ComAd,
             PaginationNav,
         },
         props: {
-            apartments: {
+            ads: {
                 type: Object,
                 required: true,
             },

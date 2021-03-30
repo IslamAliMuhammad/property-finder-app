@@ -8,6 +8,7 @@ use Database\Seeders\CitySeeder;
 use Database\Seeders\PaymentOptionSeeder;
 use Database\Seeders\AmenitySeeder;
 use Database\Seeders\ApartmentTypeSeeder;
+use Database\Seeders\VillaTypeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             PaymentOptionSeeder::class,
             AmenitySeeder::class,
             ApartmentTypeSeeder::class,
+            VillaTypeSeeder::class,
         ]);
     }
 }

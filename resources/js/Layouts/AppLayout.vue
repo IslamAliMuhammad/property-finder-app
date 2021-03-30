@@ -18,15 +18,19 @@
                             <!-- Navigation Links -->
 
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('apartments.index')" :active="route().current('apartments.index')">
+                                <jet-nav-link :href="route('apartments.index')" :active="route().current('apartments.*')">
                                     Apartments
+                                </jet-nav-link>
+
+                                <jet-nav-link :href="route('villas.index')" :active="route().current('villas.*')">
+                                    Viilas
                                 </jet-nav-link>
                             </div>
                         </div>
                         
                         
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <inertia-link :href="route('apartments.create')" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
+                            <inertia-link  v-if="!route().current('*.create')" :href="route(formRoute())" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
                                 </svg>
@@ -151,8 +155,12 @@
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
 
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('apartments.index')" :active="route().current('apartments.index')">
+                        <jet-responsive-nav-link :href="route('apartments.index')" :active="route().current('apartments.*')">
                             Apartment
+                        </jet-responsive-nav-link>
+
+                         <jet-responsive-nav-link :href="route('villas.index')" :active="route().current('villas.*')">
+                            Villas
                         </jet-responsive-nav-link>
                     </div>
 
@@ -276,7 +284,13 @@
                     preserveState: false
                 })
             },
+            formRoute() {
+                const currentRoute = route().current();
+                const index = currentRoute.indexOf('.');
+                const baseCurrentRoute = currentRoute.slice(0, index);
 
+                return baseCurrentRoute + '.' + 'create';
+            },
             logout() {
                 this.$inertia.post(route('logout'));
             },

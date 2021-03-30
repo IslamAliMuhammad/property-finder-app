@@ -53,14 +53,14 @@
 
                     <div class="space-y-4">
                         <com-select
-                            id="apartmentType"
-                            label="Apartment Type"
-                            :options="apartmentTypes"
+                            id="propertyType"
+                            label="Property Type"
+                            :options="propertyTypes"
                             optionNameAttribute="type"
                             width="w-52"
-                            :modelValue="form.apartment_type_id"
-                            @update:modelValue="form.apartment_type_id = $event"
-                            :error="errors.apartment_type_id"
+                            :modelValue="form.property_type_id"
+                            @update:modelValue="form.property_type_id = $event"
+                            :error="errors.property_type_id"
                             :required="true"
                         />
 
@@ -116,6 +116,7 @@
                         />
 
                         <com-input
+                            v-if="route().current('apartments.create')"
                             id="level"
                             label="Level"
                             type="number"
@@ -186,7 +187,7 @@ export default {
                 photos: [],
                 address: null,
                 city_id: null,
-                apartment_type_id: null,
+                property_type_id: null,
                 for_sale: null,
                 price: null,
                 amenities: [],
@@ -212,7 +213,7 @@ export default {
             type: Array,
             required: true,
         },
-        apartmentTypes: {
+        propertyTypes: {
             type: Array,
             required: true,
         },
@@ -240,8 +241,15 @@ export default {
                }
            }
         },
+        baseCurrentRoute() {
+            const currentRoute = route().current();
+            const index = currentRoute.indexOf('.');
+            const baseCurrentRoute = currentRoute.slice(0, index);
+
+            return baseCurrentRoute + '.' + 'store';
+        },
         submit() {
-            this.$inertia.post(route('apartments.store'), this.form);
+            this.$inertia.post(route(this.baseCurrentRoute()), this.form);
         },
     },
 };

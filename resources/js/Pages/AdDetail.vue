@@ -3,10 +3,10 @@
         <div class="container mx-auto my-5">
             <div class="grid grid-cols-12 gap-8">
                 <div class="col-span-9">
-                    <ad-info :apartment="apartment"/>
+                    <com-ad-info :ad="ad" :adCategory="adCategory"/>
                 </div>
                 <div class="col-span-3">
-                    <advertiser-info :apartment="apartment"/>
+                    <com-advertiser-info :ad="ad" :adCategory="adCategory"/>
                 </div>
             </div>
         </div>
@@ -15,18 +15,22 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import AdInfo from '@/Components/Ad/AdInfo'
-    import AdvertiserInfo from '@/Components/Ad/AdvertiserInfo'
+    import ComAdInfo from '@/Components/Ad/AdInfo'
+    import ComAdvertiserInfo from '@/Components/Ad/AdvertiserInfo'
 
     export default {
         components: {
             AppLayout,
-            AdInfo,
-            AdvertiserInfo,
+            ComAdInfo,
+            ComAdvertiserInfo,
         },
         props: {
-          apartment: {
+          ad: {
               type: Object,
+              required: true,
+          },
+          adCategory: {
+              type: String,
               required: true,
           },
         },

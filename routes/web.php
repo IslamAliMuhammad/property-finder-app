@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\City;
 use App\Http\Controllers\ApartmentController;
+use App\Http\Controllers\VillaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,10 +35,13 @@ Route::get('/cities', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
-    
     Route::get('/apartments/create', [ApartmentController::class, 'create'])->name('apartments.create');
-
     Route::get('/apartments/{id}', [ApartmentController::class, 'show'])->name('apartments.show');
-
     Route::post('/apartments', [ApartmentController::class, 'store'])->name('apartments.store');
+
+    Route::get('/villas', [VillaController::class, 'index'])->name('villas.index');
+    Route::get('/villas/create', [VillaController::class, 'create'])->name('villas.create');
+    Route::get('/villas/{id}', [VillaController::class, 'show'])->name('villas.show');
+    Route::post('/villas', [VillaController::class, 'store'])->name('villas.store');
+
 });

@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Apartment;
+use App\Models\Villa;
 use App\Models\City;
-use App\Models\ApartmentType;
+use App\Models\VillaType;
 use App\Models\Amenity;
 use App\Models\PaymentOption;
-use App\Models\ApartmentPhoto;
+use App\Models\VillaPhoto;
 use Illuminate\Support\Facades\Storage;
 
-class ApartmentController extends Controller
+class VillaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +22,8 @@ class ApartmentController extends Controller
     public function index()
     {
         //
-        $apartments = Apartment::with(['city', 'photos'])->latest()->paginate(9);
-
-        return Inertia::render('Ads', ['ads' => $apartments]);
+        $villas = Villa::with(['city', 'photos'])->latest()->paginate(9);
+        return Inertia::render('Ads', ['ads' => $villas]);
     }
 
     /**
@@ -36,11 +35,11 @@ class ApartmentController extends Controller
     {
         //
         $cities = City::all();
-        $apartmentTypes = ApartmentType::all();
+        $villaTypes = VillaType::all();
         $amenities = Amenity::all();
         $paymentOptions = PaymentOption::all();
 
-        return Inertia::render('AdForm', ['cities' => $cities, 'propertyTypes' => $apartmentTypes, 'amenities' => $amenities, 'paymentOptions' => $paymentOptions]);
+        return Inertia::render('AdForm', ['cities' => $cities, 'propertyTypes' => $villaTypes, 'amenities' => $amenities, 'paymentOptions' => $paymentOptions]);
     }
 
     /**
@@ -64,7 +63,6 @@ class ApartmentController extends Controller
             'amenities' => 'nullable|array',
             'payment_option_id' => 'nullable|exists:payment_options,id',
             'area' => 'required|numeric|gt:0|max:65535',
-            'level' => 'required|integer|numeric|max:255',
             'bedrooms' => 'required|integer|numeric|max:255',
             'bathrooms' => 'required|integer|numeric|max:255',
             'is_furnished' => 'nullable|boolean',
@@ -73,25 +71,25 @@ class ApartmentController extends Controller
         // Prepare data for mass assignment
         $validatedData['user_id'] = $request->user()->id;
         unset($validatedData['photos'], $validatedData['amenities'], $validatedData['property_type_id']);
-        $validatedData['apartment_type_id'] = $request->property_type_id;
+        $validatedData['villa_type_id'] = $request->property_type_id;
         
         // Mass assignment
-        $apartment = Apartment::create($validatedData);
+        $villa = Villa::create($validatedData);
         
         // Store apartment photos if exist
         if($request->photos != null) {
             foreach($request->photos as $photo){
                 $photoPath = Storage::putFile('photos', $photo);
-                ApartmentPhoto::create(['apartment_id' => $apartment->id, 'photo_path' => $photoPath]);
+                villaPhoto::create(['villa_id' => $villa->id, 'photo_path' => $photoPath]);
             }
         }
 
         // Store apartment amenities if exist
         if($request->amenities != null) {
-            $apartment->amenities()->attach($request->amenities);
+            $villa->amenities()->attach($request->amenities);
         }
 
-        return redirect(route('apartments.index'));
+        return redirect(route('villas.index'));
 
     }
 
@@ -104,10 +102,8 @@ class ApartmentController extends Controller
     public function show($id)
     {
         //
-
-        $apartment = Apartment::with(['user.city.governorate', 'photos', 'type', 'paymentOption', 'city.governorate', 'amenities'])->find($id);
-
-        return Inertia::render('AdDetail', ['ad' => $apartment, 'adCategory' => 'apartment']);
+        $villa = Villa::with(['user.city.governorate', 'photos', 'type', 'paymentOption', 'city.governorate', 'amenities'])->find($id);
+        return Inertia::render('AdDetail', ['ad' => $villa, 'adCategory' => 'villa']);
     }
 
     /**

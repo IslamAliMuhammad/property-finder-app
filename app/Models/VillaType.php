@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Apartment;
-
-class ApartmentType extends Model
+use App\Models\Villa;
+class VillaType extends Model
 {
     use HasFactory;
 
     protected $fillable = ['type'];
 
-    public function apartments(){
-        $this->hasMany(Apartment::class, 'apartment_type_id');
+    public function villas(){
+        return $this->hasMany(Villa::class, 'villa_type_id');
     }
 }

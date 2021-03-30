@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Governorate;
 use App\Models\Apartment;
 use App\Models\User;
+use App\Models\Villa;
 
 class City extends Model
 {
@@ -16,16 +17,19 @@ class City extends Model
 
     protected $fillable = ['gov_id', 'city_name'];
 
-    public function governorate()
-    {
+    public function governorate(){
         return $this->belongsTo(Governorate::class, 'gov_id');
+    }
+
+    public function users(){
+        return $this->hasMany(User::class, 'city_id');
     }
 
     public function apartments(){
         return $this->hasMany(Apartment::class, 'city_id');
     }
 
-    public function users(){
-        return $this->hasMany(User::class, 'city_id');
+    public function villas(){
+        return $this->hasMany(Villa::class, 'city_id');
     }
 }

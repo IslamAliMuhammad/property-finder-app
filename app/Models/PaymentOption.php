@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Apartment;
+use App\Models\Villa;
+
 class PaymentOption extends Model
 {
     use HasFactory;
@@ -13,5 +15,9 @@ class PaymentOption extends Model
 
     public function apartments(){
         return $this->hasMany(Apartment::class, 'payment_option_id');
+    }
+
+    public function villas(){
+        return $this->hasMany(Villa::class, 'payment_option_id');
     }
 }

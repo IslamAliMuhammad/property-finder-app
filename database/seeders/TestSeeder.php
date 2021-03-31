@@ -4,12 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Apartment;
-use App\Models\Villa;
 use App\Models\ApartmentPhoto;
+use App\Models\Villa;
 use App\Models\VillaPhoto;
 use App\Models\Amenity;
 use App\models\User;
-
+use App\Models\Land;
+use App\Models\LandPhoto;
 class TestSeeder extends Seeder
 {
     /**
@@ -27,16 +28,20 @@ class TestSeeder extends Seeder
 
             $apartments = Apartment::factory()->count(5)->create([ 'user_id' => $user->id ]);
             foreach($apartments as $apartment){
-                ApartmentPhoto::factory()->count(6)->for($apartment, 'apartment')->create([ 'apartment_id' => $apartment->id ]);
+                ApartmentPhoto::factory()->count(6)->create([ 'apartment_id' => $apartment->id ]);
                 $apartment->amenities()->attach($amenities);
             }
 
             $villas = Villa::factory()->count(5)->create([ 'user_id' => $user->id ]);
             foreach($villas as $villa){
-                VillaPhoto::factory()->count(6)->for($villa, 'villa')->create([ 'villa_id' => $villa->id ]);
+                VillaPhoto::factory()->count(6)->create([ 'villa_id' => $villa->id ]);
                 $villa->amenities()->attach($amenities);
             }
 
+            $lands = Land::factory()->count(5)->create(['user_id' => $user->id]);
+            foreach($lands as $land) {
+                LandPhoto::factory()->count(5)->create(['land_id' => $land->id]);
+            }
         }
 
     }

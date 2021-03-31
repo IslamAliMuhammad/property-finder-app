@@ -30,6 +30,8 @@
                         return 'apartments.show';
                     case 'villas.index':
                         return 'villas.show';
+                    case 'lands.index':
+                        return 'lands.show';
                 }                
             },
             adPhoto() {

@@ -25,6 +25,10 @@
                                 <jet-nav-link :href="route('villas.index')" :active="route().current('villas.*')">
                                     Viilas
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('lands.index')" :active="route().current('lands.*')">
+                                    Lands
+                                </jet-nav-link>
                             </div>
                         </div>
                         
@@ -161,6 +165,10 @@
 
                          <jet-responsive-nav-link :href="route('villas.index')" :active="route().current('villas.*')">
                             Villas
+                        </jet-responsive-nav-link>
+                        
+                        <jet-responsive-nav-link :href="route('lands.index')" :active="route().current('lands.*')">
+                            Lands
                         </jet-responsive-nav-link>
                     </div>
 

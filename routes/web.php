@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\City;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\VillaController;
+use App\Http\Controllers\LandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/villas/{id}', [VillaController::class, 'show'])->name('villas.show');
     Route::post('/villas', [VillaController::class, 'store'])->name('villas.store');
 
+
+    Route::get('/lands', [LandController::class, 'index'])->name('lands.index');
+    Route::get('/lands/create', [LandController::class, 'create'])->name('lands.create');
+    Route::get('/lands/{id}', [LandController::class, 'show'])->name('lands.show');
 });

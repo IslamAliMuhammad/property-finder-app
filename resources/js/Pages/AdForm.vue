@@ -90,7 +90,7 @@
                             :required="true"
                         />
 
-                        <com-check-amenities :amenities="amenities" @update:checkbox="amenitiesChecks" :error="errors.amenities"/>
+                        <com-check-amenities :amenities="amenities" @update:checkbox="amenitiesChecks" :error="errors.amenities" v-if="!isCurrentRoute('lands.create')"/>
 
                         <com-select
                             id="paymentOption"
@@ -104,6 +104,7 @@
                         />
 
                         <com-input
+                            v-if="!isCurrentRoute('lands.create')"
                             id="area"
                             label="Area"
                             type="number"
@@ -116,7 +117,7 @@
                         />
 
                         <com-input
-                            v-if="route().current('apartments.create')"
+                            v-if="isCurrentRoute('apartments.create')"
                             id="level"
                             label="Level"
                             type="number"
@@ -128,6 +129,7 @@
                         />
 
                         <com-input
+                            v-if="!isCurrentRoute('lands.create')"
                             id="bedrooms"
                             label="Bedrooms"
                             type="number"
@@ -139,6 +141,7 @@
                         />
 
                         <com-input
+                            v-if="!isCurrentRoute('lands.create')"
                             id="bathrooms"
                             label="Bathrooms"
                             type="number"
@@ -150,6 +153,7 @@
                         />
 
                         <com-select
+                            v-if="!isCurrentRoute('lands.create')"
                             id="furnished"
                             label="Furnished"
                             :options="[{id: 1, option: 'Yes'}, {id: 0, option: 'No'}]"
@@ -219,7 +223,7 @@ export default {
         },
         amenities: {
             type: Array,
-            required: true,
+            required: false,
         },
         paymentOptions: {
             type: Array,
@@ -250,6 +254,9 @@ export default {
         },
         submit() {
             this.$inertia.post(route(this.baseCurrentRoute()), this.form);
+        },
+        isCurrentRoute(comparedRoute) {
+            return route().current(comparedRoute);
         },
     },
 };

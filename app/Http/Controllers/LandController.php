@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Land;
 use Inertia\Inertia;
+use App\Models\City;
+use App\Models\LandType;
+use App\Models\PaymentOption;
 
 class LandController extends Controller
 {
@@ -29,6 +32,11 @@ class LandController extends Controller
     public function create()
     {
         //
+        $cities = City::all();
+        $landTypes = LandType::all();
+        $paymentOptions = PaymentOption::all();
+
+        return Inertia::render('AdForm', ['cities' => $cities, 'propertyTypes' => $landTypes, 'paymentOptions' => $paymentOptions]);
     }
 
     /**

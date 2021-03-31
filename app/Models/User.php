@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Apartment;
 use App\Models\Villa;
 use App\Models\City;
+use App\Models\Land;
 
 class User extends Authenticatable
 {
@@ -76,5 +77,9 @@ class User extends Authenticatable
 
     public function city(){
         return $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function lands() {
+        return $this->hasMany(Land::class, 'user_id');
     }
 }

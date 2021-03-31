@@ -8,7 +8,7 @@ use App\Models\Governorate;
 use App\Models\Apartment;
 use App\Models\User;
 use App\Models\Villa;
-
+use App\Models\Land;
 class City extends Model
 {
     use HasFactory;
@@ -31,5 +31,9 @@ class City extends Model
 
     public function villas(){
         return $this->hasMany(Villa::class, 'city_id');
+    }
+
+    public function lands() {
+        return $this->hasMany(Land::class, 'city_id');
     }
 }

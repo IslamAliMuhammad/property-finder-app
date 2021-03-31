@@ -8,6 +8,8 @@ use Inertia\Inertia;
 use App\Models\City;
 use App\Models\LandType;
 use App\Models\PaymentOption;
+use Illuminate\Support\Facades\Storage;
+use App\Models\LandPhoto;
 
 class LandController extends Controller
 {
@@ -48,6 +50,36 @@ class LandController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:70',
+            'description' => 'required|string|max:4096',
+            'photos' => 'nullable|array|max:6',
+            'address' => 'required|string|max:255',
+            'city_id' => 'required|exists:cities,id',
+            'property_type_id' => 'required|exists:apartment_types,id',
+            'for_sale' => 'required|boolean',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'payment_option_id' => 'nullable|exists:payment_options,id',
+            'area' => 'required|numeric|gt:0|max:65535',
+        ]);
+
+         // Prepare data for mass assignment
+         $validatedData['user_id'] = $request->user()->id;
+         unset($validatedData['photos'], $validatedData['property_type_id']);
+         $validatedData['land_type_id'] = $request->property_type_id;
+
+         // Mass assignment
+        $land = Land::create($validatedData);
+
+        // Store apartment photos if exist
+        if($request->photos != null) {
+            foreach($request->photos as $photo){
+                $photoPath = Storage::putFile('photos', $photo);
+                LandPhoto::create(['land_id' => $land->id, 'photo_path' => $photoPath]);
+            }
+        }
+
+        return redirect(route('lands.index'));
     }
 
     /**

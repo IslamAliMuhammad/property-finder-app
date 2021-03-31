@@ -104,7 +104,6 @@
                         />
 
                         <com-input
-                            v-if="!isCurrentRoute('lands.create')"
                             id="area"
                             label="Area"
                             type="number"

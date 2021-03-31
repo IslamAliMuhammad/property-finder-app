@@ -51,7 +51,9 @@ class LandController extends Controller
     public function show($id)
     {
         //
-        dd('show land id ' . $id);
+        $land = Land::with(['user.city.governorate', 'photos', 'type', 'paymentOption', 'city.governorate'])->find($id);
+
+        return Inertia::render('AdDetail', ['ad' => $land, 'adCategory' => 'land']);
     }
 
     /**

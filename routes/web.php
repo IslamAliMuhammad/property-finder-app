@@ -7,7 +7,6 @@ use App\Models\City;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\VillaController;
 use App\Http\Controllers\LandController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,4 +49,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/lands/create', [LandController::class, 'create'])->name('lands.create');
     Route::get('/lands/{id}', [LandController::class, 'show'])->name('lands.show');
     Route::post('lands', [LandController::class, 'store'])->name('lands.store');
+
+    Route::get('/aboutus', function () {
+        return Inertia::render('AboutUs');
+    })->name('aboutus.index');
 });

@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-xs overflow-hidden rounded-lg shadow-lg p-3">
+    <div class="max-w- overflow-hidden rounded-lg shadow-lg p-3" :class="{isAboutUsPage: 'max-w-full'}">
         <div class="px-6 py-4">
             <h4 class="mb-3 text-xl font-bold tracking-tight text-gray-800">Important Safety Tips</h4>
             <ol class="list-decimal space-y-2 text-sm">
@@ -14,6 +14,10 @@
 
 <script>
     export default {
-        
+        computed: {
+            isAboutUsPage() {
+                return route().current('aboutus.index');
+            },
+        },
     }
 </script>

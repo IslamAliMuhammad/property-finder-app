@@ -29,18 +29,22 @@
                                 <jet-nav-link :href="route('lands.index')" :active="route().current('lands.*')">
                                     Lands
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('aboutus.index')" :active="route().current('aboutus.*')">
+                                    About Us
+                                </jet-nav-link>
                             </div>
                         </div>
                         
                         
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <inertia-link  v-if="!route().current('*.create')" :href="route(formRoute())" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
+                            <inertia-link v-if="placeButton" :href="route(formRoute())" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
                                 </svg>
 
                                 <span class="font-semibold text-md">Place an Ad</span>
-                            </inertia-link>             
+                            </inertia-link> 
 
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
@@ -170,6 +174,10 @@
                         <jet-responsive-nav-link :href="route('lands.index')" :active="route().current('lands.*')">
                             Lands
                         </jet-responsive-nav-link>
+
+                        <jet-responsive-nav-link :href="route('aboutus.index')" :active="route().current('aboutus.*')">
+                            About Us
+                        </jet-responsive-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -283,7 +291,11 @@
                 showingNavigationDropdown: false,
             }
         },
-
+        computed: {
+            placeButton() {
+               return !route().current('*.create') && !route().current('aboutus.*');
+            }
+        },
         methods: {
             switchToTeam(team) {
                 this.$inertia.put(route('current-team.update'), {

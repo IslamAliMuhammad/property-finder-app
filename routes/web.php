@@ -53,4 +53,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/aboutus', function () {
         return Inertia::render('AboutUs');
     })->name('aboutus.index');
+
+    Route::get('user/profile/create', function () {
+        return redirect(route('profile.show'));
+    })->name('profile.create');
+    
 });

@@ -38,13 +38,16 @@
                         
                         
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <inertia-link v-if="placeButton" :href="route(formRoute())" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-                                </svg>
+                            <div v-if="isPlaceButtonShowUp">
+                                <inertia-link :href="route(formRoute())" class="flex flex-row gap-1 py-1 px-2 text-gray-700 transition-colors duration-150 border border-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-gray-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                                    </svg>
 
-                                <span class="font-semibold text-md">Place an Ad</span>
-                            </inertia-link> 
+                                    <span class="font-semibold text-md">Place an Ad</span>
+                                </inertia-link> 
+                            </div>
+                           
 
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
@@ -292,7 +295,7 @@
             }
         },
         computed: {
-            placeButton() {
+            isPlaceButtonShowUp() {
                return !route().current('*.create') && !route().current('aboutus.*');
             }
         },
@@ -305,11 +308,11 @@
                 })
             },
             formRoute() {
-                const currentRoute = route().current();
-                const index = currentRoute.indexOf('.');
-                const baseCurrentRoute = currentRoute.slice(0, index);
-
-                return baseCurrentRoute + '.' + 'create';
+              const currentRoute = route().current();
+                    const index = currentRoute.indexOf('.');
+                    const baseCurrentRoute = currentRoute.slice(0, index);
+                    
+                    return baseCurrentRoute + '.' + 'create';
             },
             logout() {
                 this.$inertia.post(route('logout'));

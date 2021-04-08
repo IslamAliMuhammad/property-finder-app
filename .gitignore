@@ -3,6 +3,7 @@
 /public/storage
 /public/js
 /public/css
+/public/mix-manifest.json
 /public/photos
 /public/js
 /storage/*.key
@@ -16,4 +17,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-documentation.txt

@@ -15,7 +15,7 @@ class AmenitySeeder extends Seeder
     public function run()
     {
         //
-        $amenities = array_map('str_getcsv', file('resources\csv\amenities.csv'));
+        $amenities = array_map('str_getcsv', file('resources/csv/amenities.csv'));
 
         foreach($amenities as $amenity) {
             Amenity::create([

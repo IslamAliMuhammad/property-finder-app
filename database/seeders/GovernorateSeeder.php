@@ -16,7 +16,7 @@ class GovernorateSeeder extends Seeder
     {
         //
         
-        $governorates = array_map('str_getcsv', file('resources\csv\governorates.csv'));
+        $governorates = array_map('str_getcsv', file('resources/csv/governorates.csv'));
 
         foreach($governorates as $governorate) {
             Governorate::create([

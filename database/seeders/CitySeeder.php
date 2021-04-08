@@ -15,7 +15,7 @@ class CitySeeder extends Seeder
     public function run()
     {
         //
-        $cities = array_map('str_getcsv', file('resources\csv\cities.csv'));
+        $cities = array_map('str_getcsv', file('resources/csv/cities.csv'));
         foreach($cities as $city) {
             City::create([
                 'gov_id' => $city[1],

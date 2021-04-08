@@ -24,7 +24,7 @@ class VillaPhotoFactory extends Factory
         return [
             //
             'villa_id' => Villa::factory(),
-            'photo_path' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'photo_path' => $this->faker->imageUrl(640, 480, 'Ad', true),
         ];
     }
 }

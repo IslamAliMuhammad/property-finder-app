@@ -25,7 +25,7 @@ class ApartmentPhotoFactory extends Factory
         return [
             //
             'apartment_id' => Apartment::factory(),
-            'photo_path' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'photo_path' => $this->faker->imageUrl(640, 480, 'Ad', true),
         ];
     }
 }

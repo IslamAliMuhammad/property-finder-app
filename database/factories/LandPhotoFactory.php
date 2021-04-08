@@ -25,7 +25,7 @@ class LandPhotoFactory extends Factory
         return [
             //
             'land_id' => Land::factory(),
-            'photo_path' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'photo_path' => $this->faker->imageUrl(640, 480, 'Ad', true),
         ];
     }
 }

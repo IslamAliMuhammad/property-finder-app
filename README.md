@@ -34,27 +34,30 @@ Property finder allows users to advertise their properties whether was apartment
         composer install
         ```
 
-    *   ```sh
-        php artisan key:generate
-        ```
-        
+### Preparations
+
+1. Create .env file in the root folder then copy all environment variables from .env.example file.
+
+2. Set the application key
+
+    ```sh
+    php artisan key:generate
+    ```
+
 3. Compiling Assets
 
     ```sh
     npm run watch
     ```
-### Preparations
 
-1. Create a virtual host for the project.
+4. Create a virtual host for the project.
 
-2. Create database for the project.
+5. Create database for the project then configure environment variables for the database you have created.
 
-3. Configure .env file.
-
-4. Initialize database
+6. Initialize database
 
     ```sh
-    php artisan migrate_in_order 
+    php artisan migrate_in_order --seed
     ```
     > *Description*: <br>
         Execute the migrations in the order specified in the file app/ Console/Comands/MigrateInOrder.php.
@@ -63,13 +66,13 @@ Property finder allows users to advertise their properties whether was apartment
         -r, --reset (Rollback all database migrations) <br>
         -s, --seed (Seed the database with necessary records)
 
-5. Create the symbolic links configured
+7. Create the symbolic links configured
 
     ```sh
     php artisan storage:link
     ```
 
-6. Reset password functionality 
+8. Reset password functionality 
     > Need to configure an SMTP server or integrate with email service like (mailgun, postmark, ....)
 
 ### Testing

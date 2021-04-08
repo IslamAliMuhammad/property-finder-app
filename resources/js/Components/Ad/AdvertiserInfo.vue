@@ -2,7 +2,7 @@
     <div class="space-y-5">
         <div class="space-y-3">
             <div class="price bg-gray-100 p-3 rounded-lg text-center shadow-md">
-                <span class="text-lg font-bold">{{ ad.price }} EGP</span>
+                <span class="text-lg font-bold">{{ priceFormatter }} EGP</span>
             </div>
 
             <div
@@ -94,6 +94,9 @@ export default {
                 month: "long",
                 year: "numeric",
             });
+        },
+        priceFormatter() {
+                return new Intl.NumberFormat().format(this.ad.price);
         },
     },
 };

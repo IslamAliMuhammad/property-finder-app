@@ -8,9 +8,10 @@ use App\Models\ApartmentPhoto;
 use App\Models\Villa;
 use App\Models\VillaPhoto;
 use App\Models\Amenity;
-use App\models\User;
+use App\Models\User;
 use App\Models\Land;
 use App\Models\LandPhoto;
+
 class TestSeeder extends Seeder
 {
     /**

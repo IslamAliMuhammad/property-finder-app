@@ -16,7 +16,7 @@
             </template>
         </div>
 
-        <h1><strong>Welcome</strong> Find Your Dream Property</h1>
+        <h1 class="text-3xl"><strong>Welcome</strong> Find Your Dream Property</h1>
 
     </div>
 </template>

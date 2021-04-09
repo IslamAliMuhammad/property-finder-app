@@ -1,29 +1,20 @@
 <template>
     <app-layout>
-        <div>
-            <h2 class="text-2xl bg-gray-100 rounded-xl shadow-lg p-3 pl-8 font-semibold text-gray-700 mt-3 max-w-full text-center">Apartment ads</h2>
-            <ad-list :ads="apartments" adCategory="apartments" />
-        </div>
+        <com-user-category-Ads header="Apartment ads" :ads="apartments" adCategory="apartments"/>
+       
+        <com-user-category-Ads header="Villa ads" :ads="villas" adCategory="villas"/>
 
-        <div>
-            <h2 class="text-2xl bg-gray-100 rounded-xl shadow-lg p-3 pl-8 font-semibold text-gray-700 mt-3 text-center">Villa ads</h2>
-            <ad-list :ads="villas" adCategory="villas"/>
-        </div>
-
-        <div>
-            <h2 class="text-2xl bg-gray-100 rounded-xl shadow-lg p-3 pl-8 font-semibold text-gray-700 mt-3 text-center">Land ads</h2>
-            <ad-list :ads="lands" adCategory="lands"/>
-        </div>
+        <com-user-category-Ads header="Land ads" :ads="lands" adCategory="lands"/>
     </app-layout>
 </template>
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import AdList from '@/Components/Ad/AdList'
+    import ComUserCategoryAds from '@/Components/Ad/UserCategoryAds'
     export default {
         components: {
             AppLayout,
-            AdList,
+            ComUserCategoryAds,
         },
         props: {
             apartments: {

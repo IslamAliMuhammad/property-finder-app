@@ -2,7 +2,7 @@
     <div class="py-2">
         <nav class="block">
             <ul class="flex pl-0 rounded list-none flex-wrap">
-                <pagination-link v-for="link in links" :key="link.label" :link="link"/>
+                <pagination-link v-for="link in links" :key="link.label" :link="link" :preserveScroll="preserveScroll"/>
             </ul>
         </nav>
     </div>
@@ -20,6 +20,10 @@
                type: Array,
                required: true,
            },
+           preserveScroll: {
+                type: Boolean,
+                required: false,
+            },
         },
     }
 </script>

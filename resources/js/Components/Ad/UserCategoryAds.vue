@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="text-2xl bg-gray-100 rounded-xl shadow-lg p-3 pl-8 font-semibold text-gray-700 mt-3 max-w-full text-center">{{ header }}</h2>
-        <com-ad-list :ads="ads" :adCategory="adCategory" />
+        <com-ad-list :ads="ads" :adCategory="adCategory" :preserveScroll="preserveScroll"/>
     </div>
 </template>
 
@@ -25,6 +25,10 @@
                 type: String,
                 required: true,
             },
+            preserveScroll: {
+               type: Boolean,
+               required: false,
+           },
         },
     }
 </script>

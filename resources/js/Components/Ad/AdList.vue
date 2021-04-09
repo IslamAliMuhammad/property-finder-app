@@ -6,7 +6,7 @@
                     <com-ad v-for="ad in ads.data" :key="ad.id" :ad="ad" :adCategory="adCategory"/>
                 </div>
 
-                <pagination-nav :links="ads.links" />
+                <pagination-nav :links="ads.links" :preserveScroll="preserveScroll"/>
             </div>
 
             <div v-else>
@@ -37,6 +37,10 @@ export default {
         },
         adCategory: {
             type: String,
+            required: false,
+        },
+        preserveScroll: {
+            type: Boolean,
             required: false,
         },
     },

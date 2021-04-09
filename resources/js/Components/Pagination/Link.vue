@@ -1,6 +1,6 @@
 <template>
      <li>
-        <inertia-link :href="linkUrl" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid text-white" :class="linkColor">
+        <inertia-link :href="linkUrl" :preserve-scroll="preserveScroll" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid text-white" :class="linkColor">
             <span v-if="typeof link.label == 'number'">{{ link.label }}</span>
             <span v-if="typeof link.label == 'string'" v-html="navigationSymbols"></span>
         </inertia-link>
@@ -20,6 +20,10 @@
            link: {
                type: Object,
                required: true,
+           },
+           preserveScroll: {
+               type: Boolean,
+               required: false,
            },
         },
         computed: {

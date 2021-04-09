@@ -1,10 +1,10 @@
 <template>
     <app-layout>
-        <com-user-category-Ads header="Apartment ads" :ads="apartments" adCategory="apartments"/>
+        <com-user-category-Ads header="Apartment ads" :ads="apartments" adCategory="apartments" :preserveScroll="true"/>
        
-        <com-user-category-Ads header="Villa ads" :ads="villas" adCategory="villas"/>
+        <com-user-category-Ads header="Villa ads" :ads="villas" adCategory="villas" :preserveScroll="true"/>
 
-        <com-user-category-Ads header="Land ads" :ads="lands" adCategory="lands"/>
+        <com-user-category-Ads header="Land ads" :ads="lands" adCategory="lands" :preserveScroll="true"/>
     </app-layout>
 </template>
 

@@ -16,11 +16,16 @@
 
     export default {
         components: {
+
         },
         props: {
             ad: {
                 type: Object,
                 required: true,
+            },
+            adCategory: {
+                type: String,
+                required: false,
             },
         },
         computed: {
@@ -32,6 +37,8 @@
                         return 'villas.show';
                     case 'lands.index':
                         return 'lands.show';
+                    case 'ads.index':
+                        return this.adCategory + '.show';
                 }                
             },
             adPhoto() {

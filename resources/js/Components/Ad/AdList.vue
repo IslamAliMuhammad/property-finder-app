@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <div v-if="ads.data.length > 0">
                 <div class="grid grid-cols-3">
-                    <com-ad v-for="ad in ads.data" :key="ad.id" :ad="ad" />
+                    <com-ad v-for="ad in ads.data" :key="ad.id" :ad="ad" :adCategory="adCategory"/>
                 </div>
 
                 <pagination-nav :links="ads.links" />
@@ -34,6 +34,10 @@ export default {
         ads: {
             type: Object,
             required: true,
+        },
+        adCategory: {
+            type: String,
+            required: false,
         },
     },
 };

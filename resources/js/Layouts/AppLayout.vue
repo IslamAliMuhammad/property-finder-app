@@ -48,7 +48,7 @@
                                 </inertia-link> 
                             </div>
                            
-
+    
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
@@ -131,6 +131,10 @@
 
                                         <jet-dropdown-link :href="route('profile.show')">
                                             Profile
+                                        </jet-dropdown-link>
+
+                                        <jet-dropdown-link :href="route('ads.index')">
+                                            Ads
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
@@ -296,7 +300,7 @@
         },
         computed: {
             isPlaceButtonShowUp() {
-               return !route().current('*.create') && !route().current('aboutus.*');
+               return !route().current('*.create') && !route().current('aboutus.*') && !route().current('ads.*') && !route().current('profile.*');
             }
         },
         methods: {
@@ -308,11 +312,11 @@
                 })
             },
             formRoute() {
-              const currentRoute = route().current();
-                    const index = currentRoute.indexOf('.');
-                    const baseCurrentRoute = currentRoute.slice(0, index);
-                    
-                    return baseCurrentRoute + '.' + 'create';
+                const currentRoute = route().current();
+                const index = currentRoute.indexOf('.');
+                const baseCurrentRoute = currentRoute.slice(0, index);
+                
+                return baseCurrentRoute + '.' + 'create';
             },
             logout() {
                 this.$inertia.post(route('logout'));

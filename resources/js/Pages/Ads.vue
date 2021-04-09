@@ -17,6 +17,10 @@
                 type: Object,
                 required: true,
             },
+            adCategory: {
+                type: String,
+                required: false,
+            },
         },
     }
 </script>

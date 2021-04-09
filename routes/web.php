@@ -7,6 +7,8 @@ use App\Models\City;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\VillaController;
 use App\Http\Controllers\LandController;
+use App\Http\Controllers\UserAdController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,8 +56,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return Inertia::render('AboutUs');
     })->name('aboutus.index');
 
+    
+    Route::get('user/ads', [UserAdController::class, 'index'])->name('ads.index');
+    
+    
     Route::get('user/profile/create', function () {
         return redirect(route('profile.show'));
     })->name('profile.create');
-    
+
+    Route::get('user/ads/create', function () {
+        return redirect(route('ads.index'));
+    })->name('ads.create');
+
 });

@@ -1,9 +1,9 @@
 <template>
      <li>
-        <a :href="link.url" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid text-white" :class="linkColor">
+        <inertia-link :href="linkUrl" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid text-white" :class="linkColor">
             <span v-if="typeof link.label == 'number'">{{ link.label }}</span>
             <span v-if="typeof link.label == 'string'" v-html="navigationSymbols"></span>
-        </a>
+        </inertia-link>
     </li>
 </template>
 
@@ -41,6 +41,9 @@
                     'bg-gray-600': true,
                  
                 }
+            },
+            linkUrl() {
+                return this.link.url ? this.link.url : '';
             },
         },
     }

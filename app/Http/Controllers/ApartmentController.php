@@ -142,5 +142,8 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         //
+        Apartment::destroy($id);
+
+        return redirect(route('ads.index'));
     }
 }

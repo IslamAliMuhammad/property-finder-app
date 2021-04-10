@@ -59,7 +59,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
     Route::get('user/ads', [UserAdController::class, 'index'])->name('ads.index');
     
-    
+    Route::delete('apartments/{id}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
+    Route::delete('villas/{id}', [VillaController::class, 'destroy'])->name('villas.destroy');
+    Route::delete('lands/{id}', [LandController::class, 'destroy'])->name('lands.destroy');
+
     Route::get('user/profile/create', function () {
         return redirect(route('profile.show'));
     })->name('profile.create');

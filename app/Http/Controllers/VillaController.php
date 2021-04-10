@@ -138,5 +138,8 @@ class VillaController extends Controller
     public function destroy($id)
     {
         //
+        Villa::destroy($id);
+
+        return redirect(route('ads.index'));
     }
 }

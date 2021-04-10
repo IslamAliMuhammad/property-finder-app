@@ -14,7 +14,7 @@
                     class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg mt-3 text-center"
                     role="alert"
                 >
-                    <p class="">Sorry, there are no apartments available</p>
+                    <p class="">Sorry, there are no {{ adCategory }} available</p>
                 </div>
             </div>
         </div>

@@ -9,6 +9,16 @@ Property finder allows users to advertise their properties whether was apartment
 * [Vue.js](https://v3.vuejs.org/) & [Inertia](https://inertiajs.com/) 
 * [TailwindCSS](https://tailwindcss.com/)
 
+## App Screenshots
+![Database Design](/app-screenshots/PropertiesDB1.jpeg)
+![Home](/app-screenshots/apartments-1.PNG)
+![Home 2](/app-screenshots/apartments-2.PNG)
+![Apartments Without Ads](/app-screenshots/apartments-without-ads.PNG)
+![Apartment Details 1](/app-screenshots/apartment-detail-1.PNG)
+![Apartment Details 2](/app-screenshots/apartment-detail-2.PNG)
+![User Ads](/app-screenshots/user-ads-without-category-zoom-out.PNG)
+![Login](/app-screenshots/login.PNG)
+
 ## Getting started
 
 ### Prerequisites 

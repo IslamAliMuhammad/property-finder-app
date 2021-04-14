@@ -90,7 +90,7 @@
                             :required="true"
                         />
 
-                        <com-check-amenities :amenities="amenities" @update:checkbox="amenitiesChecks" :error="errors.amenities" v-if="!isCurrentRoute('lands.create')"/>
+                        <com-check-amenities :amenities="amenities" :amenitiesChecked="form.amenities" @update:checkbox="amenitiesChecks" :error="errors.amenities" v-if="!isCurrentRoute('lands.*')"/>
 
                         <com-select
                             id="paymentOption"
@@ -128,7 +128,7 @@
                         />
 
                         <com-input
-                            v-if="!isCurrentRoute('lands.create')"
+                            v-if="!isCurrentRoute('lands.*')"
                             id="bedrooms"
                             label="Bedrooms"
                             type="number"
@@ -140,7 +140,7 @@
                         />
 
                         <com-input
-                            v-if="!isCurrentRoute('lands.create')"
+                            v-if="!isCurrentRoute('lands.*')"
                             id="bathrooms"
                             label="Bathrooms"
                             type="number"
@@ -152,7 +152,7 @@
                         />
 
                         <com-select
-                            v-if="!isCurrentRoute('lands.create')"
+                            v-if="!isCurrentRoute('lands.*')"
                             id="furnished"
                             label="Furnished"
                             :options="[{id: 1, option: 'Yes'}, {id: 0, option: 'No'}]"
@@ -184,7 +184,7 @@ import ComCheckAmenities from "@/Components/Form/CheckAmenities";
 export default {
     data() {
         return {
-            form: {
+            form: this.$inertia.form({
                 title: null,
                 description: null,
                 photos: [],
@@ -200,7 +200,8 @@ export default {
                 bedrooms: null,
                 bathrooms: null,
                 is_furnished: null,
-            },
+                _method: this.httpMethod(),
+            }),
         };
     },
     components: {
@@ -232,6 +233,46 @@ export default {
             type: Object,
             required: false,
         },
+        ad: {
+            type: Object,
+            required: false,
+        },
+    },
+    mounted() {
+        if(this.ad){
+            this.form.title = this.ad.title;
+            this.form.description = this.ad.description;
+            this.form.address = this.ad.address;
+            this.form.city_id = this.ad.city_id;
+            this.form.property_type_id = this.propertyTypeId; 
+            this.form.for_sale = this.ad.for_sale;
+            this.form.price = this.ad.price;
+            this.form.amenities = this.amenitiesIds; 
+            this.form.payment_option_id = this.ad.payment_option_id;
+            this.form.area = this.ad.area;
+            this.form.level = this.ad.level;
+            this.form.bedrooms = this.ad.bedrooms;
+            this.form.bathrooms = this.ad.bathrooms;
+            this.form.is_furnished = this.ad.is_furnished;
+
+        }
+    },
+    computed: {
+        propertyTypeId() {
+            if(this.ad.apartment_type_id){
+                return this.ad.apartment_type_id;
+            }else if(this.ad.villa_type_id){
+                return this.ad.villa_type_id;
+            }else if(this.ad.land_type_id){
+                return this.ad.land_type_id;
+            }
+        },
+        amenitiesIds() {
+            if(!this.isCurrentRoute('lands.*')){
+                return this.ad.amenities.map(amenitiy => amenitiy['id'].toString());
+
+            }
+        },
     },
     methods: {
         amenitiesChecks(e) {
@@ -249,13 +290,26 @@ export default {
             const index = currentRoute.indexOf('.');
             const baseCurrentRoute = currentRoute.slice(0, index);
 
-            return baseCurrentRoute + '.' + 'store';
+            return baseCurrentRoute;
         },
         submit() {
-            this.$inertia.post(route(this.baseCurrentRoute()), this.form);
+            if(route().current('*.create')){
+                console.log('create ad');
+                this.form.post(route(this.baseCurrentRoute() + '.' + 'store'));
+            }else if(route().current('*.edit')){
+                this.form.post(route(this.baseCurrentRoute() + '.' + 'update', this.ad.id));
+            }
         },
         isCurrentRoute(comparedRoute) {
             return route().current(comparedRoute);
+        },
+        httpMethod() {
+            if(route().current('*.create')){
+                return 'post';
+
+            }else if(route().current('*.edit')){
+                return 'put';
+            }
         },
     },
 };

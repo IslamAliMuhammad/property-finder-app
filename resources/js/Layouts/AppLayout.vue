@@ -300,7 +300,7 @@
         },
         computed: {
             isPlaceButtonShowUp() {
-               return !route().current('*.create') && !route().current('aboutus.*') && !route().current('ads.*') && !route().current('profile.*');
+               return !route().current('*.create') && !route().current('aboutus.*') && !route().current('ads.*') && !route().current('profile.*') && !route().current('*.edit');
             }
         },
         methods: {

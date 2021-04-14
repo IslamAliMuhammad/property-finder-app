@@ -8,7 +8,9 @@
                 <p class="font-bold">{{ priceFormatter }} EGP</p>
                 <p>{{ ad.city.city_name }}</p>
                 <div v-if="route().current('ads.index')" class="mt-3 space-x-6 text-xl text-gray-500">
-                    <inertia-link :href="route(deleteRoute, ad.id)" method="delete" class="hover:text-red-700" preserve-scroll as="button">Delete</inertia-link>
+                    <inertia-link :href="route(editFormRoute, ad.id)" method="get" class="hover:text-white hover:bg-gray-400 p-2 rounded-lg font-semibold bg-gray-200" preserve-scroll as="button">Update</inertia-link>
+
+                    <inertia-link :href="route(deleteRoute, ad.id)" method="delete" class="hover:text-red-700 hover:bg-gray-400 p-2 rounded-lg font-semibold bg-gray-200" preserve-scroll as="button">Delete</inertia-link>
                 </div>
             </div>
         </div>
@@ -52,6 +54,9 @@
             },
             deleteRoute(){
                 return this.adCategory + '.destroy';
+            },
+            editFormRoute(){
+                return this.adCategory + '.edit';
             },
           
         }

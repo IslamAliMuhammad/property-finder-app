@@ -14,6 +14,7 @@
                     :label="amenity.amenity"
                     @update:checkbox="$emit('update:checkbox', $event)"
                     :required="required"
+                    :amenitiesChecked="amenitiesChecked"
                 />
             </div>
             <com-error-message :error="error"/>
@@ -43,6 +44,10 @@ export default {
         },
         required: {
             type: Boolean,
+            required: false,
+        },
+        amenitiesChecked: {
+            type: Array,
             required: false,
         },
     },

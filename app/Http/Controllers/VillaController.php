@@ -115,6 +115,14 @@ class VillaController extends Controller
     public function edit($id)
     {
         //
+        $cities = City::all();
+        $villaTypes = VillaType::all();
+        $amenities = Amenity::all();
+        $paymentOptions = PaymentOption::all();
+
+        $villa = Villa::with(['photos', 'amenities'])->find($id);
+        
+        return Inertia::render('AdForm', ['cities' => $cities, 'propertyTypes' => $villaTypes, 'amenities' => $amenities, 'paymentOptions' => $paymentOptions, 'ad' => $villa]);
     }
 
     /**
@@ -127,6 +135,55 @@ class VillaController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:70',
+            'description' => 'required|string|max:4096',
+            'photos' => 'nullable|array|max:6',
+            'address' => 'required|string|max:255',
+            'city_id' => 'required|exists:cities,id',
+            'property_type_id' => 'required|exists:apartment_types,id',
+            'for_sale' => 'required|boolean',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'amenities' => 'nullable|array',
+            'payment_option_id' => 'nullable|exists:payment_options,id',
+            'area' => 'required|numeric|gt:0|max:65535',
+            'bedrooms' => 'required|integer|numeric|max:255',
+            'bathrooms' => 'required|integer|numeric|max:255',
+            'is_furnished' => 'nullable|boolean',
+        ]);
+
+         // Prepare data for mass update
+         $validatedData['user_id'] = $request->user()->id;
+         unset($validatedData['photos'], $validatedData['amenities'], $validatedData['property_type_id']);
+         $validatedData['villa_type_id'] = $request->property_type_id;
+
+        $villa = Villa::find($id);
+        // Mass update
+        $villa->update($validatedData);
+
+
+        // Store apartment photos if exist
+        if($request->photos != null) {
+
+            $villaPhotos = villaPhoto::where('villa_id', $villa->id)->get();
+
+            Storage::delete($villaPhotos->pluck('photo_path')->toArray()); 
+            villaPhoto::destroy($villaPhotos->pluck('id'));
+
+            foreach($request->photos as $photo){
+                $photoPath = Storage::putFile('photos', $photo);
+                villaPhoto::create(['villa_id' => $villa->id, 'photo_path' => $photoPath]);
+            }
+        }
+
+        // Store apartment amenities if exist
+        if($request->amenities != null) {
+            $villa->amenities()->detach();
+            $villa->amenities()->attach($request->amenities);
+        }
+
+        return redirect(route('ads.index'));
     }
 
     /**

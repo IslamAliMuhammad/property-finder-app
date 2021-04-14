@@ -51,6 +51,11 @@ export default {
             }
         },
     },
+    computed: {
+        inputValue() {
+            
+        },
+    },
     props: {
         id: {
             type: String,

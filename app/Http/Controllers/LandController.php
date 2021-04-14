@@ -105,6 +105,13 @@ class LandController extends Controller
     public function edit($id)
     {
         //
+        $cities = City::all();
+        $lamdTypes = LandType::all();
+        $paymentOptions = PaymentOption::all();
+
+        $land = Land::with(['photos'])->find($id);
+        
+        return Inertia::render('AdForm', ['cities' => $cities, 'propertyTypes' => $lamdTypes, 'paymentOptions' => $paymentOptions, 'ad' => $land]);
     }
 
     /**
@@ -117,6 +124,44 @@ class LandController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:70',
+            'description' => 'required|string|max:4096',
+            'photos' => 'nullable|array|max:6',
+            'address' => 'required|string|max:255',
+            'city_id' => 'required|exists:cities,id',
+            'property_type_id' => 'required|exists:apartment_types,id',
+            'for_sale' => 'required|boolean',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'payment_option_id' => 'nullable|exists:payment_options,id',
+            'area' => 'required|numeric|gt:0|max:65535',
+        ]);
+
+        // Prepare data for mass assignment
+        $validatedData['user_id'] = $request->user()->id;
+        unset($validatedData['photos'], $validatedData['property_type_id']);
+        $validatedData['land_type_id'] = $request->property_type_id;
+
+        $land = Land::find($id);
+        // Mass update
+        $land->update($validatedData);
+
+         // Store apartment photos if exist
+         if($request->photos != null) {
+
+            $landPhotos = LandPhoto::where('land_id', $land->id)->get();
+
+            Storage::delete($landPhotos->pluck('photo_path')->toArray()); 
+            LandPhoto::destroy($landPhotos->pluck('id'));
+
+            foreach($request->photos as $photo){
+                $photoPath = Storage::putFile('photos', $photo);
+                LandPhoto::create(['land_id' => $land->id, 'photo_path' => $photoPath]);
+            }
+        }
+
+        return redirect(route('ads.index'));
+
     }
 
     /**

@@ -1,7 +1,7 @@
 # Property Finder
 > Advertise and find properties.
 
-Property finder allows users to advertise their properties whether was apartments or villas or lands and finding properties.
+Property finder is a full-stack web app that allows users to advertise their properties whether it was apartments or villas or lands in addition to search and find properties they are looking for.  
 
 ## Built With
 * [PHP](https://www.php.net/) & [Laravel](https://laravel.com/)

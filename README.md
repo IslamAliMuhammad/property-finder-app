@@ -10,7 +10,6 @@ Property finder is a full-stack web app that allows users to advertise their pro
 * [TailwindCSS](https://tailwindcss.com/)
 
 ## App Screenshots
-![Database Design](/app-screenshots/PropertiesDB1.jpeg)
 ![Home](/app-screenshots/apartments-1.PNG)
 ![Home 2](/app-screenshots/apartments-2.PNG)
 ![Apartments Without Ads](/app-screenshots/apartments-without-ads.PNG)
